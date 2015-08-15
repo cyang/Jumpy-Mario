@@ -6,11 +6,11 @@ var mainState = {
 
     preload: function () { 
         // Change the background color of the game
-        game.stage.backgroundColor = '#71c5cf';
+        game.stage.backgroundColor = '#659CEF';
             
         // Load the bird sprite
         game.load.image('bird', 'assets/mario.png');
-        game.load.image('pipe', 'assets/pipe.png');
+        game.load.image('pipe', 'assets/block.png');
         game.load.audio('jump', 'assets/jump.wav');
         game.load.audio('gameOver', 'assets/gameover.wav');
 
