@@ -13,7 +13,8 @@ var mainState = {
         game.load.image('pipe', 'assets/block.png');
         game.load.audio('jump', 'assets/jump.wav');
         game.load.audio('gameOver', 'assets/gameover.wav');
-
+        
+        
     },
 
     create: function () { 
@@ -38,8 +39,13 @@ var mainState = {
 
         this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
 
-        this.score = 0;
+        this.score = -1;
         this.labelScore = this.game.add.text(20, 20, "0", { font: "30px Arial", fill: "#ffffff" });
+        
+        if(this.highScore == undefined)
+            this.highScore = 0;
+            
+        this.labelHighScore = this.game.add.text(190, 20, "High Score: " + this.highScore.toString(),  { font: "30px Arial", fill: "#ffffff" });
 
         this.bird.anchor.setTo(-0.2, 0.5);
 
@@ -115,6 +121,11 @@ var mainState = {
 
         this.score += 1;
         this.labelScore.text = this.score;
+        
+        if(this.score >= this.highScore){
+            this.highScore = this.score;
+            this.labelHighScore.text = "High Score: " + this.highScore;
+        }
     },
 
 };
