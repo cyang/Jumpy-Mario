@@ -12,7 +12,7 @@ var mainState = {
         game.load.image('bird', 'assets/mario.png');
         game.load.image('pipe', 'assets/block.png');
         game.load.audio('jump', 'assets/jump.wav');
-        game.load.audio('gameOver', 'assets/gameover.wav');
+        game.load.audio('gameOver', 'assets/bump.wav');
    
         
     },
