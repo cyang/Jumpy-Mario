@@ -13,7 +13,7 @@ var mainState = {
         game.load.image('pipe', 'assets/block.png');
         game.load.audio('jump', 'assets/jump.wav');
         game.load.audio('gameOver', 'assets/gameover.wav');
-        
+   
         
     },
 
@@ -30,8 +30,8 @@ var mainState = {
         this.bird.body.gravity.y = 1000;  
             
         // Call the 'jump' function when the spacekey is hit
-        var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.jump, this);
+        var jumpKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        jumpKey.onDown.add(this.jump, this);
 
         this.pipes = game.add.group();
         this.pipes.enableBody = true;
@@ -40,12 +40,12 @@ var mainState = {
         this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
 
         this.score = -1;
-        this.labelScore = this.game.add.text(20, 20, "0", { font: "30px Arial", fill: "#ffffff" });
+        this.labelScore = this.game.add.text(20, 20, "0", { font: "30px Consolas", fill: "gold" });
         
         if(this.highScore == undefined)
             this.highScore = 0;
             
-        this.labelHighScore = this.game.add.text(190, 20, "High Score: " + this.highScore.toString(),  { font: "30px Arial", fill: "#ffffff" });
+        this.labelHighScore = this.game.add.text(170, 20, "High Score: " + this.highScore.toString(),  { font: "30px Consolas", fill: "gold" });
 
         this.bird.anchor.setTo(-0.2, 0.5);
 
@@ -63,6 +63,9 @@ var mainState = {
 
         if (this.bird.angle < 20)
             this.bird.angle += 1;
+            
+        
+            
     },
             
     // Make the bird jump 
@@ -79,6 +82,10 @@ var mainState = {
         animation.start();
 
         this.jumpSound.play();
+        
+        $('h1').hide(300);
+        
+      
     },
 
     hitPipe: function () {
@@ -101,6 +108,7 @@ var mainState = {
     restartGame: function () {  
         // Start the 'main' state, which restarts the game
         game.state.start('main');
+       
     },
 
     addOnePipe: function (x, y) {
